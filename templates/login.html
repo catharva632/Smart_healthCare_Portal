@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeX | Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", Georgia, 'Times New Roman', Times, serif;
+        }
+
+        :root {
+            --base-color: rgb(30, 144, 246);
+            --base-variant: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(230, 245, 255, 0.85));
+            --text-color: black;
+            --login-backColor: #e8f7ff;
+            --background: linear-gradient(159deg, rgba(30, 144, 255, 1) 0%, rgba(153, 186, 221, 1) 100%);
+            --input-border: #cccccc;
+            --button-background: rgb(30, 144, 246);
+            --white: white;
+            --link-color: #2c5364;
+        }
+
+        .darkmode {
+            --base-color: #121212;
+            --base-variant: #1e1e1e;
+            --text-color: #ffffff;
+            --login-backColor: #e8f7ff;
+            --background: #121212;
+            --white: white;
+            --input-border: #333333;
+            --button-background: #3949ab;
+            --link-color: #82b1ff;
+        }
+
+        body,
+        .btn {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        html,
+        body {
+            height: 100%;
+            background: var(--background);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 130px;
+            width: 40vw;
+            height: 60vh;
+            margin: auto auto;
+            margin-top: 120px;
+            background: var(--base-variant);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            position: relative;
+        }
+
+        form input {
+            padding: 10px;
+            width: 210px;
+            margin-top: 3px;
+            border: 2px var(--input-border);
+            border-radius: 5px;
+        }
+
+        form {
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        form h2 {
+            margin-bottom: 20px;
+            font-size: 26px;
+            text-align: center;
+        }
+
+        form a {
+            color: var(--link-color);
+        }
+
+        .btn {
+            padding: 10px;
+            background-color: var(--button-background);
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            color: var(--white);
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .reg {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .reg button {
+            width: 120px;
+        }
+
+        .reg h2 {
+            color: var(--text-color);
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .reg a {
+            padding: 10px;
+            background-color: var(--button-background);
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            color: var(--white);
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .container::before {
+            content: "OR";
+            position: absolute;
+            top: 55%;
+            left: 53.25%;
+            transform: translate(-50%, -50%);
+            background-color: var(--base-color);
+            color: var(--white);
+            padding: 10px 16px;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .container::after {
+            content: "";
+            position: absolute;
+            height: 41%;
+            width: 1px;
+            background-color: black;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 140px;
+            margin-left: 50px;
+        }
+
+        #theme-switch {
+            width: 50px;
+            height: 50px;
+            border-radius: 30%;
+            box-shadow: none;
+            border: none;
+            outline: none;
+            background-color: var(--button-background);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            margin-left: 1420px;
+            top: 42px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        #theme-switch svg {
+            fill: var(--white);
+        }
+
+        #theme-switch svg:first-child {
+            display: block;
+        }
+
+        #theme-switch svg:last-child {
+            display: none;
+        }
+
+        .darkmode #theme-switch svg:first-child {
+            display: none;
+        }
+
+        .darkmode #theme-switch svg:last-child {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="theme-switch">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+            <path
+                d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+            <path
+                d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z" />
+        </svg>
+    </button>
+
+    <div class="container">
+        <div class="log">
+            <form action="{{ url_for('login') }}" method="POST">
+                <h2>Login</h2>
+                <label for="email">Email Id</label>
+                <input type="email" name="email" placeholder="Enter your Registered Email Id" required><br><br>
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Enter your Password" required><br>
+                <a href="#">forgot password</a><br>
+                <button class="btn">Sign In</button>
+            </form>
+        </div>
+        <div class="reg">
+            <h2>New User?</h2>
+            <a href="{{ url_for('register') }}" class="btn">Register</a>
+        </div>
+
+    </div>
+
+    <script>
+        let btn = document.getElementById("theme-switch");
+        btn.addEventListener("click", () => {
+            document.body.classList.toggle("darkmode");
+        });
+    </script>
+</body>
+
+</html>
